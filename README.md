@@ -1,5 +1,8 @@
 # yoink
 
+> Work in progress.  
+> The application is under development.
+
 Minimal macOS GUI for yt-dlp.
 
 ## Features
