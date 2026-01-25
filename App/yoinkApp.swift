@@ -13,5 +13,8 @@ struct yoinkApp: App {
         WindowGroup {
             ContentView()
         }
+        Settings {
+            SettingsView()
+        }
     }
 }

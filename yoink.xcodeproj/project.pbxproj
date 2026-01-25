@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3B9A1C22F2B1B1B00ABCDEF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B9A1C32F2B1B1B00ABCDEF /* SettingsView.swift */; };
+		A3B9A1C12F2B1A1A00ABCDEF /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B9A1C02F2B1A1A00ABCDEF /* AppLogger.swift */; };
 		A329F44B2F1FFAFB004EBA76 /* yoinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329F44A2F1FFAFB004EBA76 /* yoinkApp.swift */; };
 		A329F44D2F1FFAFB004EBA76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329F44C2F1FFAFB004EBA76 /* ContentView.swift */; };
 		A329F44F2F1FFAFC004EBA76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A329F44E2F1FFAFC004EBA76 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3B9A1C32F2B1B1B00ABCDEF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A3B9A1C02F2B1A1A00ABCDEF /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		A329F4472F1FFAFB004EBA76 /* yoink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yoink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A329F44A2F1FFAFB004EBA76 /* yoinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yoinkApp.swift; sourceTree = "<group>"; };
 		A329F44C2F1FFAFB004EBA76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		A329F4552F1FFC7F004EBA76 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A3B9A1C32F2B1B1B00ABCDEF /* SettingsView.swift */,
+				A3B9A1C02F2B1A1A00ABCDEF /* AppLogger.swift */,
 				A329F44E2F1FFAFC004EBA76 /* Assets.xcassets */,
 				A329F44C2F1FFAFB004EBA76 /* ContentView.swift */,
 				A329F44A2F1FFAFB004EBA76 /* yoinkApp.swift */,
@@ -128,6 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B9A1C22F2B1B1B00ABCDEF /* SettingsView.swift in Sources */,
+				A3B9A1C12F2B1A1A00ABCDEF /* AppLogger.swift in Sources */,
 				A329F44D2F1FFAFB004EBA76 /* ContentView.swift in Sources */,
 				A329F44B2F1FFAFB004EBA76 /* yoinkApp.swift in Sources */,
 			);
