@@ -1,0 +1,20 @@
+# Internal AI/task data (do not commit)
+.tasks/
+.tmp/
+AGENTS.md
+
+# Xcode
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.xcscmblueprint
+
+# macOS
+.DS_Store
