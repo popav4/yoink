@@ -78,6 +78,8 @@ struct DownloadRequest {
     let customFileName: String?
     let ytDlpExecutablePathOverride: String?
     let cookiesBrowser: CookiesBrowser
+    /// Optional profile path: passed as `browser:path` to yt-dlp `--cookies-from-browser`.
+    let cookiesBrowserProfile: String?
 }
 
 struct DownloadItem: Identifiable {

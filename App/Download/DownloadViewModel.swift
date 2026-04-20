@@ -12,6 +12,7 @@ final class DownloadViewModel: ObservableObject {
     private static let fallbackDownloadDirectory = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first?.path ?? NSHomeDirectory()
     private static let ytDlpPathOverrideKey = "ytDlpExecutablePathOverride"
     private static let cookiesBrowserKey = "cookiesBrowser"
+    private static let cookiesBrowserProfileKey = "cookiesBrowserProfile"
 
     @Published var urlText = ""
     @Published var fileNameText = ""
@@ -88,6 +89,11 @@ final class DownloadViewModel: ObservableObject {
         let cookiesBrowser = CookiesBrowser(
             rawValue: UserDefaults.standard.string(forKey: Self.cookiesBrowserKey) ?? ""
         ) ?? .none
+        let cookiesBrowserProfile: String? = {
+            let raw = UserDefaults.standard.string(forKey: Self.cookiesBrowserProfileKey)?
+                .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            return raw.isEmpty ? nil : raw
+        }()
 
         let request = DownloadRequest(
             url: trimmed,
@@ -96,7 +102,8 @@ final class DownloadViewModel: ObservableObject {
             selectedAudioFormat: selectedAudioFormat,
             customFileName: overrideFileName,
             ytDlpExecutablePathOverride: ytDlpPathOverride,
-            cookiesBrowser: cookiesBrowser
+            cookiesBrowser: cookiesBrowser,
+            cookiesBrowserProfile: cookiesBrowserProfile
         )
 
         var item = DownloadItem(url: trimmed, mode: selectedMode, status: .queued, progress: 0.0)

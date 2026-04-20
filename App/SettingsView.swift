@@ -58,6 +58,13 @@ private struct DownloadsSettingsView: View {
     @AppStorage("cookiesBrowser")
     private var cookiesBrowserRaw = CookiesBrowser.none.rawValue
 
+    @AppStorage("cookiesBrowserProfile")
+    private var cookiesBrowserProfile = ""
+
+    private var selectedBrowser: CookiesBrowser {
+        CookiesBrowser(rawValue: cookiesBrowserRaw) ?? .none
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Default download folder")
@@ -93,6 +100,20 @@ private struct DownloadsSettingsView: View {
                 }
                 .labelsHidden()
                 .frame(width: 160)
+            }
+
+            if selectedBrowser != .none {
+                HStack(spacing: 8) {
+                    Text("Profile path")
+                        .fixedSize()
+                    TextField("Default profile", text: $cookiesBrowserProfile)
+                        .font(.system(size: 12, design: .monospaced))
+                        .textFieldStyle(.roundedBorder)
+                }
+
+                Text("Leave empty to use the default profile. Specify the profile folder path if the browser uses a non-standard location.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
             Text("Used for sites that require login.")

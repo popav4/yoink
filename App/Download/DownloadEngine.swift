@@ -365,7 +365,14 @@ final class YtDlpDownloadEngine: DownloadEngine {
         ]
 
         if request.cookiesBrowser != .none {
-            args += ["--cookies-from-browser", request.cookiesBrowser.rawValue]
+            let browserValue: String
+            if let profile = request.cookiesBrowserProfile,
+               !profile.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                browserValue = "\(request.cookiesBrowser.rawValue):\(profile.trimmingCharacters(in: .whitespacesAndNewlines))"
+            } else {
+                browserValue = request.cookiesBrowser.rawValue
+            }
+            args += ["--cookies-from-browser", browserValue]
         }
 
         if let ffmpegPath = FFmpegLocator.executableURL()?.path {
