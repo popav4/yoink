@@ -102,6 +102,10 @@ private struct DownloadsSettingsView: View {
                 .frame(width: 160)
             }
 
+            Text("Used for sites that require login.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
             if selectedBrowser != .none {
                 HStack(spacing: 8) {
                     Text("Profile path")
@@ -115,10 +119,6 @@ private struct DownloadsSettingsView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-
-            Text("Used for sites that require login.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
 
             Spacer()
         }
