@@ -205,7 +205,8 @@ struct ContentView: View {
                                         .frame(width: 56, alignment: .leading)
                                     Text(item.fileSizeText ?? "—")
                                         .foregroundStyle(.secondary)
-                                        .frame(width: 72, alignment: .leading)
+                                        .lineLimit(1)
+                                        .frame(width: 88, alignment: .leading)
                                     Text(item.addedText)
                                         .frame(width: 128, alignment: .leading)
                                 }

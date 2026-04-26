@@ -3,8 +3,10 @@
 //  yoink
 //
 
+import AppKit
 import Combine
 import Foundation
+import UserNotifications
 
 @MainActor
 final class DownloadViewModel: ObservableObject {
@@ -340,6 +342,8 @@ final class DownloadViewModel: ObservableObject {
                     updateProgress(id: eventID, progress: 1.0, shouldLog: false)
                     updateStatus(id: eventID, status: .done, reason: nil)
                     AppLogger.shared.log("\(engine.name) finished successfully for: \(url)")
+                    let fileName = downloads.first(where: { $0.id == eventID })?.fileName
+                    sendDownloadNotification(title: "Download Complete", body: fileName ?? url)
                 }
             } else {
                 updateStatus(id: eventID, status: .failed, reason: message)
@@ -348,6 +352,8 @@ final class DownloadViewModel: ObservableObject {
                 } else {
                     AppLogger.shared.log("\(engine.name) failed for: \(url). Exit code: \(exitCode)")
                 }
+                let body = message ?? url
+                sendDownloadNotification(title: "Download Failed", body: body)
             }
         }
     }
@@ -394,6 +400,22 @@ final class DownloadViewModel: ObservableObject {
         guard let index = downloads.firstIndex(where: { $0.id == id }) else { return }
         if downloads[index].fileSizeText == sizeText { return }
         downloads[index].fileSizeText = sizeText
+    }
+
+    private func sendDownloadNotification(title: String, body: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        AppLogger.shared.log("Posting notification: \(title) — \(body) (app active: \(NSApplication.shared.isActive))")
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error {
+                AppLogger.shared.log("Notification post error: \(error.localizedDescription)")
+            } else {
+                AppLogger.shared.log("Notification posted successfully")
+            }
+        }
     }
 
     private func logProgressIfNeeded(id: UUID, progress: Double, url: String) {
